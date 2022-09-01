@@ -5,4 +5,5 @@
     <string name="disclaimer_accept">I accept these terms.</string>
     <string name="dont_show_next_time">Do not show next time?</string>
     <string name="welcome">"Time orientation can cause a lot of stress for a person living with dementia. This is a simple clock with high contrast with clear display of numeric and named times, and days of the week that can help guide someone living with dementia or not to what time it is. "</string>
+    <string name="billing_text">Review and control your billing options.</string>
 </resources>

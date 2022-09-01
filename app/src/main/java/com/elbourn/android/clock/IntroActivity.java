@@ -25,7 +25,7 @@ public class IntroActivity extends AppCompatActivity {
         Boolean introCheckBox = sharedPreferences.getBoolean("introCheckBox", false);
         Log.i(TAG, "introCheckBox: " + introCheckBox);
         if (introCheckBox) {;
-            startMainActivity();
+            startSubscriptionsActivity();
         } else {
             setContentView(R.layout.activity_intro);
             setupButtons();
@@ -33,10 +33,10 @@ public class IntroActivity extends AppCompatActivity {
         Log.i(TAG, "end onCreate");
     }
 
-    void startMainActivity() {
+    void startSubscriptionsActivity() {
         Context context = getApplicationContext();
-        Intent mA = new Intent(context, MainActivity.class);
-        startActivity(mA);
+        Intent sA = new Intent(context, SubscriptionsActivity.class);
+        startActivity(sA);
     }
 
     void setupButtons() {
@@ -46,7 +46,7 @@ public class IntroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "introImageButton clicked");
                 // now do auth activity
-                startMainActivity();
+                startSubscriptionsActivity();
             }
         });
         CheckBox introCheckBox = findViewById(R.id.introCheckBox);
