@@ -14,10 +14,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends OptionsMenu {
 
     private String TAG = "MainActivity";
-
     WebView myWebView;
 
     @Override
@@ -34,11 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         myWebView = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
         myWebView.loadUrl("file:///android_asset/website_clock/index.html");
     }
 
@@ -55,39 +52,4 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed();
             finishAffinity();
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.manageYourSubscriptions:
-                startSubscriptionWebsite();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    private void startSubscriptionWebsite() {
-        Log.i(TAG, "start startSubscriptionWebsite");
-        Context context = getApplicationContext();
-        runOnUiThread(new Runnable() {
-            public void run() {
-                String msg = "Starting browser to access billing system...";
-                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-            }
-        });
-        String url = "https://play.google.com/store/account/subscriptions";
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(browserIntent);
-        Log.i(TAG, "end startSubscriptionWebsite");
-    }
-
 }

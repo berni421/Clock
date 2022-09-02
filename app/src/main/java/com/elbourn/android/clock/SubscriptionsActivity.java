@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.billingclient.api.AcknowledgePurchaseParams;
@@ -38,7 +39,7 @@ import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 
-public class SubscriptionsActivity extends AppCompatActivity {
+public class SubscriptionsActivity extends OptionsMenu {
 
     static String TAG = "SubscriptionsActivity";
     BillingClient billingClient;
@@ -50,6 +51,8 @@ public class SubscriptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "start onCreate");
         setContentView(R.layout.activity_subscriptions);
+        TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
+        subscriptionsStatus.setText("Subscription status: checking.");
         checkPurchase();
         Log.i(TAG, "end onCreate");
     }
@@ -60,40 +63,6 @@ public class SubscriptionsActivity extends AppCompatActivity {
         Log.i(TAG, "start onResume");
         setContentView(R.layout.activity_subscriptions);
         Log.i(TAG, "end onResume");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.manageYourSubscriptions:
-                startSubscriptionWebsite();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    void startSubscriptionWebsite() {
-        Log.i(TAG, "start startSubscriptionWebsite");
-        Context context = getApplicationContext();
-        runOnUiThread(new Runnable() {
-            public void run() {
-                String msg = "Starting browser to access billing system...";
-                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-            }
-        });
-        String url = "https://play.google.com/store/account/subscriptions";
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(browserIntent);
-        Log.i(TAG, "end startSubscriptionWebsite");
     }
 
     void checkPurchase() {
@@ -208,10 +177,13 @@ public class SubscriptionsActivity extends AppCompatActivity {
                         break;
                     }
                     if (subscriptionVaild) {
-                        grantEntitlement("Subscription");
+                        grantEntitlement("Subscription valid");
                     }
                     if (testing) {
                         grantEntitlement("Test subscription");
+                    } else {
+                        TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
+                        subscriptionsStatus.setText("Subscription status: not valid");
                     }
                 }
             }
@@ -221,6 +193,8 @@ public class SubscriptionsActivity extends AppCompatActivity {
 
     void grantEntitlement(String licenseType) {
         Log.i(TAG, "start grantEntitlement");
+        TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
+        subscriptionsStatus.setText("Subscription status: " + licenseType);
         Context context = getApplicationContext();
         runOnUiThread(new Runnable() {
             public void run() {
