@@ -51,8 +51,6 @@ public class SubscriptionsActivity extends OptionsMenu {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "start onCreate");
         setContentView(R.layout.activity_subscriptions);
-        TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
-        subscriptionsStatus.setText("Subscription status: checking.");
         checkPurchase();
         Log.i(TAG, "end onCreate");
     }
@@ -62,6 +60,7 @@ public class SubscriptionsActivity extends OptionsMenu {
         super.onResume();
         Log.i(TAG, "start onResume");
         setContentView(R.layout.activity_subscriptions);
+//        checkPurchase();
         Log.i(TAG, "end onResume");
     }
 
@@ -80,7 +79,7 @@ public class SubscriptionsActivity extends OptionsMenu {
                     runOnUiThread(new Runnable() {
                         public void run() {
                             String msg = "Error connecting to billing system. Try later.";
-                            Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                         }
                     });
                     finishAffinity();
@@ -109,7 +108,7 @@ public class SubscriptionsActivity extends OptionsMenu {
                 runOnUiThread(new Runnable() {
                     public void run() {
                         String msg = "Error connecting to billing system. Try later.";
-                        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
                 finishAffinity();
@@ -159,7 +158,7 @@ public class SubscriptionsActivity extends OptionsMenu {
         runOnUiThread(new Runnable() {
             public void run() {
                 String msg = "Checking subscription ... please wait";
-                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             }
         });
         QueryPurchasesParams queryPurchaseParams = QueryPurchasesParams.newBuilder()
@@ -182,8 +181,15 @@ public class SubscriptionsActivity extends OptionsMenu {
                     if (testing) {
                         grantEntitlement("Test subscription");
                     } else {
+                        Context context = getApplicationContext();
+                        String msg = "Subscription status: not valid";
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        });
                         TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
-                        subscriptionsStatus.setText("Subscription status: not valid");
+                        subscriptionsStatus.setText(msg);
                     }
                 }
             }
@@ -193,17 +199,21 @@ public class SubscriptionsActivity extends OptionsMenu {
 
     void grantEntitlement(String licenseType) {
         Log.i(TAG, "start grantEntitlement");
-        TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
-        subscriptionsStatus.setText("Subscription status: " + licenseType);
+//        TextView subscriptionsStatus = findViewById(R.id.subscriptionStatus);
+//        subscriptionsStatus.setText("Subscription status: " + licenseType);
+        Log.i(TAG, "licenseType: " + licenseType);
         Context context = getApplicationContext();
         runOnUiThread(new Runnable() {
             public void run() {
                 String msg = licenseType + " granted.\nStarting application...";
-                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             }
         });
-        Intent mA = new Intent(context, MainActivity.class);
-        startActivity(mA);
-        Log.i(TAG, "end grantEntitlement");
+        startActivity(new Intent(context, MainActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

@@ -45,15 +45,22 @@ public class OptionsMenu extends AppCompatActivity {
                 startSubscriptionWebsite();
                 return true;
             case R.id.subscriptionsIntroOff:
-                Boolean subscriptionsIntroOff = !item.isChecked();
-                item.setChecked(subscriptionsIntroOff);
-                Log.i(TAG, "subscriptionsIntroOff: " + subscriptionsIntroOff);
-                Context context = getApplicationContext();
-                IntroActivity.setIntroCheckBox(context, subscriptionsIntroOff);
+                setIntroductionOff(item);
+                return true;
+            case R.id.subscriptionsRetry:
+                recreate();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    void setIntroductionOff(MenuItem item) {
+        Context context = getApplicationContext();
+        Boolean subscriptionsIntroOff = !item.isChecked();
+        item.setChecked(subscriptionsIntroOff);
+        IntroActivity.setIntroCheckBox(context, subscriptionsIntroOff);
+        Log.i(TAG, "subscriptionsIntroOff: " + subscriptionsIntroOff);
     }
 
     void startSubscriptionWebsite() {

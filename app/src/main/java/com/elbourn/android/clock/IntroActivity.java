@@ -37,7 +37,6 @@ public class IntroActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         Intent sA = new Intent(context, SubscriptionsActivity.class);
         startActivity(sA);
-        finish();
     }
 
     void setupButtons() {
@@ -82,12 +81,4 @@ public class IntroActivity extends AppCompatActivity {
         Boolean introCheckBox = sharedPreferences.getBoolean("introCheckBox", false);
         Log.i(TAG, "introCheckBox: " + introCheckBox);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        Log.i(TAG, "start onBackPressed");
-//        finishAffinity();
-//        Log.i(TAG, "end onBackPressed");
-//    }
 }

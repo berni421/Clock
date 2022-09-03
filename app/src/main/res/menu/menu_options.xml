@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/subscriptionsIntroOff"
-        android:title="Do not show menu next time."
         android:checkable="true"
+        android:title="Do not show menu next time."
         app:showAsAction="never" />
     <item
         android:id="@+id/subscriptionsManage"
         android:title="Manage subscription."
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/subscriptionsRetry"
+        android:title="Retry subscription checks."
         app:showAsAction="never" />
 </menu>
