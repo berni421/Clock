@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Clock"
         tools:targetApi="31">
         <activity
-            android:name=".SubscriptionsActivity"
+            android:name=".DonateActivity"
             android:exported="false" />
         <activity
             android:name=".DisclaimerActivity"

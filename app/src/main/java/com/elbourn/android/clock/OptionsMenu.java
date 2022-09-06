@@ -32,7 +32,7 @@ public class OptionsMenu extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_options, menu);
         Context context = getApplicationContext();
-        MenuItem introCheckBox = menu.findItem(R.id.subscriptionsIntroOff);
+        MenuItem introCheckBox = menu.findItem(R.id.menuIntroOff);
         introCheckBox.setChecked(IntroActivity.getIntroCheckBox(context));
         return true;
     }
@@ -41,14 +41,11 @@ public class OptionsMenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.subscriptionsManage:
-                startSubscriptionWebsite();
-                return true;
-            case R.id.subscriptionsIntroOff:
+            case R.id.menuIntroOff:
                 setIntroductionOff(item);
                 return true;
-            case R.id.subscriptionsRetry:
-                recreate();
+            case R.id.menuDonate:
+                startDonationWebsite();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -63,18 +60,18 @@ public class OptionsMenu extends AppCompatActivity {
         Log.i(TAG, "subscriptionsIntroOff: " + subscriptionsIntroOff);
     }
 
-    void startSubscriptionWebsite() {
-        Log.i(TAG, "start startSubscriptionWebsite");
+    void startDonationWebsite() {
+        Log.i(TAG, "start startDonationWebsite");
         Context context = getApplicationContext();
         runOnUiThread(new Runnable() {
             public void run() {
-                String msg = "Starting browser to access billing system...";
+                String msg = "Starting browser to donation system...";
                 Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
             }
         });
-        String url = "https://play.google.com/store/account/subscriptions";
+        String url = "https://www.elbourn.com/feed-the-cat/";
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
-        Log.i(TAG, "end startSubscriptionWebsite");
+        Log.i(TAG, "end startDonationWebsite");
     }
 }
