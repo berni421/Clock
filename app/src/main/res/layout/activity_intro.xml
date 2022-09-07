@@ -23,19 +23,48 @@
                 android:id="@+id/introWelcomeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:padding="16dp"
+                android:text="@string/intro_welcome"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/introWelcomeImage"
                 android:layout_width="128dp"
                 android:layout_height="192dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:contentDescription="Screenshot"
                 app:layout_constraintTop_toBottomOf="@id/introWelcomeTextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/screenshot_20220727_163021" />
+                app:srcCompat="@drawable/screenshot_20220727_163021"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/introWelcomeTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/intro_welcome2"
+                app:layout_constraintTop_toBottomOf="@id/introWelcomeImage" />
+
+            <ImageView
+                android:id="@+id/feedthecatImage"
+                android:layout_width="300dp"
+                android:layout_height="175dp"
+                android:padding="16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/feedthecat"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/introWelcomeTextView2"/>
+
+            <TextView
+                android:id="@+id/introDonateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/into_donate_text"
+                app:layout_constraintTop_toBottomOf="@id/feedthecatImage" />
+
 
             <CheckBox
                 android:id="@+id/introCheckBox"
@@ -44,7 +73,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/dont_show_next_time"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/introWelcomeImage" />
+                app:layout_constraintTop_toBottomOf="@id/introDonateText" />
 
             <ImageButton
                 android:id="@+id/introImageButton"
@@ -54,7 +83,7 @@
                 android:contentDescription="touch to move to start Clock"
                 android:src="@android:drawable/ic_media_play"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/introWelcomeImage" />
+                app:layout_constraintTop_toBottomOf="@id/introDonateText" />
 
             <TextView
                 android:id="@+id/introNextText"

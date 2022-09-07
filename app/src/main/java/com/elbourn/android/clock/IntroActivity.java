@@ -1,7 +1,5 @@
 package com.elbourn.android.clock;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +9,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 
-public class IntroActivity extends AppCompatActivity {
+public class IntroActivity extends OptionsMenu {
 
     static String APP = BuildConfig.APPLICATION_ID;
     static String TAG = "IntroActivity";
@@ -25,7 +23,7 @@ public class IntroActivity extends AppCompatActivity {
         Boolean introCheckBox = sharedPreferences.getBoolean("introCheckBox", false);
         Log.i(TAG, "introCheckBox: " + introCheckBox);
         if (introCheckBox) {;
-            startDonateActivity();
+            startMainActivity();
         } else {
             setContentView(R.layout.activity_intro);
             setupButtons();
@@ -33,10 +31,9 @@ public class IntroActivity extends AppCompatActivity {
         Log.i(TAG, "end onCreate");
     }
 
-    void startDonateActivity() {
+    void startMainActivity() {
         Context context = getApplicationContext();
-        Intent sA = new Intent(context, DonateActivity.class);
-        startActivity(sA);
+        startActivity(new Intent(context, MainActivity.class));
     }
 
     void setupButtons() {
@@ -46,7 +43,7 @@ public class IntroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "introImageButton clicked");
                 // now do auth activity
-                startDonateActivity();
+                startMainActivity();
             }
         });
         CheckBox introCheckBox = findViewById(R.id.introCheckBox);
@@ -80,5 +77,11 @@ public class IntroActivity extends AppCompatActivity {
         }
         Boolean introCheckBox = sharedPreferences.getBoolean("introCheckBox", false);
         Log.i(TAG, "introCheckBox: " + introCheckBox);
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finishAffinity();
     }
 }
