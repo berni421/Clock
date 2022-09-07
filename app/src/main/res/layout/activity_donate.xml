@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Please support my software projects, and help feed the cat. You can also provide support using the menu options on the top right. There is no obligation."
+        android:text="Please make a small financial gift to support my software projects, and help feed the cat. See also menu option top right - help feed the cat."
         app:layout_constraintTop_toBottomOf="@id/feedthecatImage" />
 
     <TextView
@@ -40,25 +40,26 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:text="Click here ->"
-        app:layout_constraintTop_toBottomOf="@id/donateText" />
+        app:layout_constraintTop_toBottomOf="@id/donateText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/donateButton" />
 
     <Button
-        android:layout_marginTop="10dp"
         android:id="@+id/donateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FEED THE CAT"
+        android:text="FEED\nTHE CAT"
         app:layout_constraintTop_toBottomOf="@id/donateText"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintLeft_toRightOf="@id/donateClickText"
+        app:layout_constraintRight_toLeftOf="@id/donateContinueButton" />
 
     <ImageButton
         android:id="@+id/donateContinueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:contentDescription="touch to move to application"
         android:src="@android:drawable/ic_media_play"
+        app:layout_constraintLeft_toRightOf="@id/donateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/donateText" />
 
@@ -67,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="To start application. Click here --^"
+        android:text="To continue. Click play --^^"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/donateButton" />
 

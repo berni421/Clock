@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menuIntroOff"
         android:checkable="true"
-        android:title="Do not show menu next time."
+        android:title="Do not show introduction page next time."
         app:showAsAction="never" />
     <item
         android:id="@+id/menuDonate"
