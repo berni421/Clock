@@ -65,7 +65,7 @@ public class OptionsMenu extends AppCompatActivity {
         Context context = getApplicationContext();
         runOnUiThread(new Runnable() {
             public void run() {
-                String msg = "Starting browser to donation system...";
+                String msg = "Starting browser to feed the cat ...";
                 Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
             }
         });
