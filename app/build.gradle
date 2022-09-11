@@ -9,8 +9,8 @@ android {
         applicationId "com.elbourn.android.clock"
         minSdk 23
         targetSdk 32
-        versionCode 17
-        versionName "1.17"
+        versionCode 2000
+        versionName "1.1-ct"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

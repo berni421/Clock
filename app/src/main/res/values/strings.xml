@@ -8,6 +8,6 @@
     <string name="disclaimer_accept">I accept these terms.</string>
     <string name="dont_show_next_time">Do not show next time?</string>
     <string name="intro_welcome">"Welcome\n\nTime orientation can cause a lot of stress for a person living with dementia.</string>
-    <string name="intro_welcome2">This is a simple clock with high contrast with clear display of numeric and named times, and days of the week that can help guide someone living with dementia or not to what time it is. "</string>
+    <string name="intro_welcome2">This is a simple clock with high contrast with clear display of numeric and named times, dates, and days of the week that can help guide someone living with dementia or not to what time it is. "</string>
     <string name="into_donate_text">Please make a financial gift of your choice to support my software projects. See menu options top right - help feed the cat.</string>
 </resources>
