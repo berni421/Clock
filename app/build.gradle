@@ -9,8 +9,8 @@ android {
         applicationId "com.elbourn.android.clock"
         minSdk 23
         targetSdk 32
-        versionCode 2001
-        versionName "1.18"
+        versionCode 2002
+        versionName "1.19"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,6 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.elbourn.android.clock'
 }
 
 dependencies {

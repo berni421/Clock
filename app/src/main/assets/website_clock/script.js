@@ -77,9 +77,19 @@ function draw() {
   var time = hourPad + hour + ":" +
     minutePad + minute + ":" +
     secondPad + second + " " + dayAMPM;
-  var date = dayPad + day + " " +
-    monthPad + dayMonth[month] + " " +
-    year;
+  var locale = navigator.language;
+  print("locale: ", locale);
+  if (locale == "en-US") {
+    var date =
+      monthPad + dayMonth[month] + " " +
+      dayPad + day + " " +
+      year;
+  } else {
+    var date =
+      dayPad + day + " " +
+      monthPad + dayMonth[month] + " " +
+      year;
+  }
   textSize(width * 0.1);
   text(time, width / 2, height * 0.2);
   text(dayName[dayOfWeek], width / 2, height * 0.4);
