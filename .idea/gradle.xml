@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/Dropbox/Documents/AndroidStudioProjects/Clock" />
-            <option value="$USER_HOME$/Dropbox/Documents/AndroidStudioProjects/Clock/app" />
+            <option value="$USER_HOME$/Documents/AndroidStudioProjects/Clock" />
+            <option value="$USER_HOME$/Documents/AndroidStudioProjects/Clock/app" />
           </set>
         </option>
       </GradleProjectSettings>

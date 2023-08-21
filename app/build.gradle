@@ -3,14 +3,14 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.elbourn.android.clock"
         minSdk 23
-        targetSdk 32
-        versionCode 2002
-        versionName "1.19"
+        targetSdk 33
+        versionCode 2003
+        versionName "1.20"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
